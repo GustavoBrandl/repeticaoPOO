@@ -31,7 +31,7 @@ public class Atividade4b {
 		int paisB;
 		
 		do {
-			System.out.print("\nInforma a população do pais A: " );
+			System.out.print("\nInforma a população do pais B: " );
 			paisB = input.nextInt();
 			
 			if (paisB < 0) {
@@ -42,7 +42,7 @@ public class Atividade4b {
 		double crescimentoB;
 		
 		do{
-			System.out.print("\nInforma a taxa de crescimento do pais A: " );
+			System.out.print("\nInforma a taxa de crescimento do pais B: " );
 			crescimentoB = input.nextDouble();
 			
 			if (crescimentoB < 1) {
@@ -52,13 +52,31 @@ public class Atividade4b {
 		
 		int anos = 0;
 		
-		while (paisA <= paisB) {
-			paisA = (int) (paisA*crescimentoA);
-			paisB = (int) (paisB*crescimentoB);
-			anos ++;
+		if (paisA > paisB) {
+			int iAux = paisA;
+			paisA = paisB;
+			paisB = iAux;
+			
+			double dAux = crescimentoA;
+			crescimentoA = crescimentoB;
+			crescimentoB = dAux;
+			
+			System.out.print("\nNumeros alterado. País A tem a menor população. País B tem a maior.\n");
 		}
 		
-		System.out.println("Vão demorar " + anos + " anos para o pais A ficar maior que o pais B.");
+		if (crescimentoA >= crescimentoB) {
+			
+			while (paisA <= paisB) {
+				paisA = (int) (paisA*crescimentoA);
+				paisB = (int) (paisB*crescimentoB);
+				anos ++;
+			}
+		
+			System.out.println("Vão demorar " + anos + " anos para o país A ficar maior que o país B.");
+		
+		} else {
+			System.out.println("Progama impossivel. A taxa de crescimento do país A é menor que a do país B. Assim é impossivel país A ficar maior que o país B.");
+		}
 		
 		input.close();
 	}
